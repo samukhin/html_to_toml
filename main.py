@@ -17,13 +17,9 @@ for s in soup.select('style'):
 
 # Convert prepared html to json
 output_json = json.dumps(html_to_json.convert(soup.prettify()))
-# And save json to file
-with open("index.json", 'w') as file:
-    file.write(output_json)
 
-# Read json from file and convert to toml
-with open("index.json", 'r') as file:
-    input_json = json.load(file)
+# Read json from string and convert to toml
+input_json = json.loads(output_json)
 output_toml = toml.dumps(input_json)
 
 # Save toml to file
