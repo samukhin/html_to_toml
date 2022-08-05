@@ -15,7 +15,7 @@ for s in soup.select('script'):
 for s in soup.select('style'):
     s.clear()
 
-# Convert to prepared html to json
+# Convert prepared html to json
 output_json = json.dumps(html_to_json.convert(soup.prettify()))
 # And save json to file
 with open("index.json", 'w') as file:
