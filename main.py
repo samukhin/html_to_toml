@@ -15,12 +15,8 @@ for s in soup.select('script'):
 for s in soup.select('style'):
     s.clear()
 
-# Convert prepared html to json
-output_json = json.dumps(html_to_json.convert(soup.prettify()))
-
-# Read json from string and convert to toml
-input_json = json.loads(output_json)
-output_toml = toml.dumps(input_json)
+# Convert prepared html -> json -> toml
+output_toml = toml.dumps(html_to_json.convert(soup.prettify()))
 
 # Save toml to file
 with open("index.toml", 'w') as file:
